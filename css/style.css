@@ -2,17 +2,20 @@ body {
 	box-sizing: border-box;
 	font-family: 'Pragati Narrow', sans-serif;
 	color: black;
+	background-color: #ECECEC;
 }
 
-.container {
-	width: 100%;
+.container-fluid {
+	width: 94%;
 	margin-top: 90px;
 	margin-bottom: 30px;
 }
 
-/*navbar css*/
+/*navbar*/
+
 .navbar {
 	border-bottom: 2px solid black;
+	background: white !important;
 }
 
 .navbar-brand {
@@ -20,8 +23,10 @@ body {
 }
 
 /*sidebar on the left containing the list of articles*/
+
 #articles {
-	border: 2px solid #D4D4D4;
+	background: white;
+	box-shadow: 0 0 2px #000;
 }
 
 ul {
@@ -32,12 +37,133 @@ ul {
 li {
   	background-size: cover;
 	color: black;
+	transition: 0.5s all;
+}
+
+li:hover {
+	background-color: rgba(0,0,0,0.2);
+	color: white;
+	box-shadow: 0 0 0 1000px rgba(0,0,0,0.6) inset;
 }
 
 h3 {
-	font-size: 16px;
-	padding: 30px 20px 30px 20px;
+	font-size: 18px;
+	line-height: 1.5em;
+	padding: 40px 20px 40px 20px;
 	border-bottom: 1px solid #D4D4D4;
 	margin: 0;
 	text-decoration: underline;
+}
+
+/*individual articles*/
+
+article {
+	padding: 30px 30px 10px 30px;
+	margin-left: 30px;
+	background: white;
+	box-shadow: 0 0 2px #000;
+}
+
+article h1 {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 24px;
+	line-height: 1.5em;
+	font-weight: 900;
+	padding: 10px 50px 10px 50px;
+}
+
+article img {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 7px;
+}
+
+article h4 {
+	font-size: 16px;
+	font-style: italic;
+	color: grey;
+	margin-top: 6px;
+}
+
+i {
+	float: right;
+	margin: 5px;
+	padding-bottom: 20px;
+}
+
+article p {
+	clear: both;
+	font-size: 18px;
+}
+
+/*media queries for mobile responsiveness */
+
+@media screen and (max-width: 980px) {
+
+	.container-fluid {
+		width: 99%;
+		margin-top: 80px;
+	}
+	
+	article {
+		margin-left: 0;
+	}
+
+	h3 {
+		padding: 20px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+
+	.container-fluid {
+		width: 98%;
+		margin-top: 80px;
+	}
+
+	article {
+		margin-top: 20px;
+		margin-left: 0;
+		padding: 20px;
+	}
+
+	article h1 {
+		padding: 0 10px 0 10px;
+	}
+
+	h2 {
+		font-size: 24px;
+	}
+
+	h3 {
+		padding: 10px 20px 10px 20px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+
+	.container-fluid {
+		width: 98%;
+		margin-top: 78px;
+	}
+
+	article {
+		margin-top: 20px;
+		margin-left: 0;
+		padding: 20px;
+	}
+
+	h2 {
+		font-size: 24px;
+	}
+
+	h3 {
+		padding: 5px 20px 5px 20px;
+	}
+
+	article h1 {
+		padding: 0;
+	}
+
 }

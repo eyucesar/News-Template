@@ -1,0 +1,43 @@
+body {
+	box-sizing: border-box;
+	font-family: 'Pragati Narrow', sans-serif;
+	color: black;
+}
+
+.container {
+	width: 100%;
+	margin-top: 90px;
+	margin-bottom: 30px;
+}
+
+/*navbar css*/
+.navbar {
+	border-bottom: 2px solid black;
+}
+
+.navbar-brand {
+	font-family: 'Questrial', sans-serif;
+}
+
+/*sidebar on the left containing the list of articles*/
+#articles {
+	border: 2px solid #D4D4D4;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+}
+
+li {
+  	background-size: cover;
+	color: black;
+}
+
+h3 {
+	font-size: 16px;
+	padding: 30px 20px 30px 20px;
+	border-bottom: 1px solid #D4D4D4;
+	margin: 0;
+	text-decoration: underline;
+}

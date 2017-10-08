@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 		//make the ajax call
         $.ajax({
-          url: "https://s3-us-west-2.amazonaws.com/saatva-hiring/news.json",
+          url: "https://cors-anywhere.herokuapp.com/https://s3-us-west-2.amazonaws.com/saatva-hiring/news.json",
           method: "GET"
         })
         //after data comes back from the request, dynamically create the list items with a for loop

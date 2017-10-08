@@ -10,7 +10,6 @@ $(document).ready(function() {
         //after data comes back from the request, dynamically create the list items with a for loop
         .done(function(response) {
         	var articles = response.articles;
-        	console.log(articles);
         	$("#articles").html("<ul></ul>");
         	for (var i = 0; i < articles.length; i++) {
         		//append the articles to the articles div
@@ -38,10 +37,10 @@ $(document).ready(function() {
 	function changeBackGr() {
 		var state = $(this).attr("data-state");
 		if (state === "noBackGr") {
-			$(this).attr("style", "background-image:url('" + $(this).attr("backGr") + "')").siblings().attr("style", "background: none");;
+			$(this).attr("style", "background-image:url('" + $(this).attr("backGr") + "')");
 			$(this).attr("data-state", "backGr");
 		} else {
-			$(this).attr("style", "background-image:url('" + $(this).attr("noBackGr") + "')").siblings().attr("style", "background: none");;;
+			$(this).attr("style", "background-image:url('" + $(this).attr("noBackGr") + "')");
 			$(this).attr("data-state", "noBackGr");
 		}
 	}

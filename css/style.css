@@ -1,5 +1,8 @@
-body {
+* {
 	box-sizing: border-box;
+}
+
+body {
 	font-family: 'Pragati Narrow', sans-serif;
 	color: black;
 	background-color: #ECECEC;
@@ -22,31 +25,35 @@ body {
 	font-family: 'Questrial', sans-serif;
 }
 
+.navbar a {
+	font-size: 1.4em;
+}
+
 /*sidebar on the left containing the list of articles*/
 
-#articles {
+#articles-list {
 	background: white;
 	box-shadow: 0 0 2px #000;
 }
 
-ul {
+#articles-list ul {
 	list-style-type: none;
 	margin: 0;
 }
 
-li {
+#articles-list li {
   	background-size: cover;
 	color: black;
-	transition: 0.5s all;
+	transition: 0.2s all;
 }
 
-li:hover {
+#articles-list li:hover {
 	background-color: rgba(0,0,0,0.2);
 	color: white;
 	box-shadow: 0 0 0 1000px rgba(0,0,0,0.6) inset;
 }
 
-h3 {
+#articles-list h3 {
 	font-size: 18px;
 	line-height: 1.5em;
 	padding: 40px 20px 40px 20px;
@@ -59,7 +66,7 @@ h3 {
 
 article {
 	padding: 30px 30px 10px 30px;
-	margin-left: 30px;
+	margin-left: 20px;
 	background: white;
 	box-shadow: 0 0 2px #000;
 }
@@ -67,7 +74,7 @@ article {
 article h1 {
 	text-transform: uppercase;
 	text-align: center;
-	font-size: 24px;
+	font-size: 30px;
 	line-height: 1.5em;
 	font-weight: 900;
 	padding: 10px 50px 10px 50px;
@@ -86,7 +93,7 @@ article h4 {
 	margin-top: 6px;
 }
 
-i {
+article i {
 	float: right;
 	margin: 5px;
 	padding-bottom: 20px;
@@ -110,7 +117,7 @@ article p {
 		margin-left: 0;
 	}
 
-	h3 {
+	#articles-list h3 {
 		padding: 20px;
 	}
 }
@@ -132,11 +139,11 @@ article p {
 		padding: 0 10px 0 10px;
 	}
 
-	h2 {
+	article h2 {
 		font-size: 24px;
 	}
 
-	h3 {
+	#articles-list h3 {
 		padding: 10px 20px 10px 20px;
 	}
 }
@@ -154,16 +161,15 @@ article p {
 		padding: 20px;
 	}
 
-	h2 {
+	article h2 {
 		font-size: 24px;
 	}
 
-	h3 {
+	#articles-list h3 {
 		padding: 5px 20px 5px 20px;
 	}
 
 	article h1 {
 		padding: 0;
 	}
-
 }

@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	function displayArticleList() {
 
-		//making the ajax call
+		//make the ajax call
         $.ajax({
           url: "http://s3-us-west-2.amazonaws.com/saatva-hiring/news.json",
           method: "GET"
@@ -10,39 +10,52 @@ $(document).ready(function() {
         //after data comes back from the request, dynamically create the list items with a for loop
         .done(function(response) {
         	var articles = response.articles;
-        	$("#articles").html("<ul></ul>");
         	for (var i = 0; i < articles.length; i++) {
-        		//append the articles to the articles div
-				$("ul").append("<li><h3>" + articles[i].title + "</h3></li>");
-				$("ul li").eq(i).attr("backGr", articles[i].urlToImage);
-				$("ul li").eq(i).attr("noBackGr", "background: none");
-				$("ul li").eq(i).attr("data-state", "noBackGr");
-				//calling the change background function
-				$("ul li").eq(i).hover(changeBackGr);
+        		//append the article titles to the articles div as list items
+				$("#articles-list ul").append("<li><h3>" + articles[i].title + "</h3></li>");
+				//set attributes of the list items with the object properties
+				$("#articles-list ul li").eq(i).attr({ backgr: articles[i].urlToImage,
+					nobackgr: "background: none",
+					datastate: "nobackgr",
+					title: articles[i].title,
+					description: articles[i].long_description,
+					author: articles[i].author, 
+					date: moment(articles[i].publishedAt).format('ll')
+				});
 
-			}
-			//first article populates the content div on page load
-			$("#content").html("<article></article>");
-			$("article").append("<h1>" + articles[0].title + "</h1>");
-			$("article").append("<img src='" + articles[0].urlToImage + "' alt='article-image'>");
-			$("article").append("<i class='fa fa-rss-square' aria-hidden='true'></i><i class='fa fa-twitter-square' aria-hidden='true'></i><i class='fa fa-facebook-square' aria-hidden='true'></i><i class='fa fa-envelope' aria-hidden='true'></i>");
-			$("article").append("<h4>By " + articles[0].author + " - " + moment(articles[0].publishedAt).format('ll') + "</h4>");
-			$("article").append(articles[0].long_description);
+				//display the first article's content on page load
+				$("article h1").eq(i).html(articles[0].title);
+				$("article img").eq(i).attr({src: articles[0].urlToImage, alt: "article-image"});
+				$("article h4").eq(i).html("By " + articles[0].author + " - " + moment(articles[0].publishedAt).format('ll'));
+				$("article .content").eq(i).html(articles[0].long_description);
+				//call the change background and display article functions
+				$("#articles-list ul li").eq(i).hover(changeBackgr);
+				$("#articles-list ul li").eq(i).on("click", displayArticle);
+			}		
 		});
 	}
 
 	//calling the display articles list function
 	displayArticleList();
 
-	function changeBackGr() {
-		var state = $(this).attr("data-state");
-		if (state === "noBackGr") {
-			$(this).attr("style", "background-image:url('" + $(this).attr("backGr") + "')");
-			$(this).attr("data-state", "backGr");
+	function changeBackgr() {
+		//toggle the data state with conditionals
+		var state = $(this).attr("datastate");
+		if (state === "nobackgr") {
+			$(this).attr("style", "background-image:url('" + $(this).attr("backgr") + "')");
+			$(this).attr("datastate", "backgr");
 		} else {
-			$(this).attr("style", "background-image:url('" + $(this).attr("noBackGr") + "')");
-			$(this).attr("data-state", "noBackGr");
+			$(this).attr("style", "background-image:url('" + $(this).attr("nobackgr") + "')");
+			$(this).attr("datastate", "nobackgr");
 		}
+	}
+
+	function displayArticle() {
+		//set the content of the tags using the list items' attributes
+		$("article h1").html($(this).attr("title"));
+		$("article img").attr("src", $(this).attr("backgr"));
+		$("article h4").html($(this).attr("author") + " - " + $(this).attr("date"));
+		$("article .content").html($(this).attr("description"));
 	}
 
 });

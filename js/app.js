@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	function displayArticleList() {
 
-		// make the ajax call
+		// make the ajax call using cors anywhere as proxy, otherwise the request is rejected due to cross origin
         $.ajax({
           url: "https://cors-anywhere.herokuapp.com/https://s3-us-west-2.amazonaws.com/saatva-hiring/news.json",
           method: "GET"
@@ -23,24 +23,25 @@ $(document).ready(function() {
 					date: moment(articles[i].publishedAt).format('ll')
 				});
 
-				// display the first article's content on page load
-				$("article h1").eq(i).html(articles[0].title);
-				$("article img").eq(i).attr({src: articles[0].urlToImage, alt: "article-image"});
-				$("article h4").eq(i).html("By " + articles[0].author + " - " + moment(articles[0].publishedAt).format('ll'));
-				$("article .content").eq(i).html(articles[0].long_description);
+				// display the article content in article element inside content div
+				$("article h1").eq(i).html(articles[i].title);
+				$("article img").eq(i).attr({src: articles[i].urlToImage, alt: "article-image"});
+				$("article h4").eq(i).html("By " + articles[i].author + " - " + moment(articles[i].publishedAt).format('ll'));
+				$("article .content").eq(i).html(articles[i].long_description);
 				// call the change background and view article functions
 				$("#articles-list ul li").eq(i).hover(changeBackgr);
 				$("#articles-list ul li").eq(i).on("click", viewArticle);
 			}		
 		});
+
 	}
 
-	// calling the display article list function
+	// call the display article list function
 	displayArticleList();
 
-	// function that will change the background on mouseenter
+	// function that will change the background on hover
 	function changeBackgr() {
-		//toggle the data state with conditionals
+		//toggle the data state with conditionals and set background accordingly
 		var state = $(this).attr("datastate");
 		if (state === "nobackgr") {
 			$(this).attr("style", "background-image:url('" + $(this).attr("backgr") + "')");
@@ -51,10 +52,9 @@ $(document).ready(function() {
 		}
 	}
 
-	// function that will populate the article tag inside content div
+	// function that will populate the clicked article inside article element
 	function viewArticle() {
-		//set the content of the tags using the list items' attributes
-		$(this).attr("style", "background-image:url('" + $(this).attr("backgr") + "')");
+		//set the content of the elements using the list items' attributes
 		$("article h1").html($(this).attr("title"));
 		$("article img").attr("src", $(this).attr("backgr"));
 		$("article h4").html($(this).attr("author") + " - " + $(this).attr("date"));
@@ -62,7 +62,7 @@ $(document).ready(function() {
 	}
 
 	// change navbar background on scroll
-	$(document).scroll(function () {
+	$(document).scroll(function() {
 	 	var $nav = $(".navbar");
 	 	$nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
 	});

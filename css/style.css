@@ -68,6 +68,7 @@ body {
 	background-color: rgba(0,0,0,0.2);
 	color: white;
 	box-shadow: 0 0 0 1000px rgba(0,0,0,0.6) inset;
+	cursor: pointer;
 }
 
 #articles-list h3 {

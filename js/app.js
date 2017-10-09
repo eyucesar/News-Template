@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	function displayArticleList() {
 
-		// make the ajax call using cors anywhere as proxy, otherwise the request is rejected due to cross origin
+	// make the ajax call using cors anywhere as proxy, otherwise the request is rejected due to cross origin
         $.ajax({
           url: "https://cors-anywhere.herokuapp.com/https://s3-us-west-2.amazonaws.com/saatva-hiring/news.json",
           method: "GET"

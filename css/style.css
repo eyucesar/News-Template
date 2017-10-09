@@ -29,17 +29,17 @@ body {
 /*navbar classes when page is scrolled*/
 
 .scrolled {
-  background-color: #666666 !important;
-  transition: background-color 200ms linear;
+	background-color: #666666 !important;
+	transition: background-color 200ms linear;
 }
 
 .scrolled .navbar-brand {
-  color: white;
-  font-size: 24px;
+	color: white;
+	font-size: 24px;
 }
 
 .scrolled .navbar-brand:hover {
-  color: white;
+	color: white;
 }
 
 .scrolled.navbar {

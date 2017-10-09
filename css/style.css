@@ -156,6 +156,10 @@ footer {
 	margin-top: 10px;
 }
 
+footer a {
+	color: inherit;
+}
+
 /*media queries for mobile responsiveness */
 
 @media screen and (max-width: 980px) {
